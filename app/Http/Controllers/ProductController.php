@@ -26,7 +26,7 @@ class ProductController extends Controller
 
         $path_image = '';
         if ($request->hasFile('image')) {
-            $path_image = $request->file('image')->storePublicly();
+            $path_image = $request->file('image')->storePublicly('images', 'public');
         }
         //Poi salviamo tutto
 
