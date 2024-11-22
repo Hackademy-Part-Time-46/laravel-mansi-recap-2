@@ -1,15 +1,16 @@
-Homepage
+<x-main>
+    <div class="py-5 album bg-body-tertiary">
+        <div class="container">
 
-@guest
-    Non sei registrato? <a href="{{ route('register') }}">Clicca qui</a>
-    Sei gia dei nostri? <a href="{{ route('login') }}">Clicca qui</a>
-@endguest
-@auth
-    Ciao, {{ Auth::user()->name }}
-    La mia email è {{ Auth::user()->email }}
-    Mi sono registrao il: {{ Auth::user()->created_at }}
-    <form action="{{ route('logout') }}" method="post">
-        @csrf
-        <button type="submit">Logout</button>
-    </form>
-@endauth
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                @foreach ($products as $product)
+                    <x-card :$product>
+                        <a href="{{ route('detail', ['product' => $product]) }}"
+                            class="btn btn-sm btn-outline-secondary">Compra</a>
+                    </x-card>
+                @endforeach
+            </div>
+        </div>
+    </div>
+
+</x-main>
